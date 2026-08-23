@@ -20,8 +20,14 @@ The system MUST render the six units in a fixed visual order on the homepage.
 #### Scenario: Initial Page Load
 
 - **WHEN** user navigates to `/`
-- **THEN** units are rendered in this order: Header → Hero → FeatureNav → CityQuickEntry → HotPosts → HotSpots → Footer
+- **THEN** units are rendered in this order: Header → Hero → FeatureNav → CityQuickEntry → HotPosts → HotSpots → Explore → Footer
 - **AND** the AiEntry FAB is fixed at the bottom-right corner throughout
+
+#### Scenario: Explore Insertion Between HotSpots And Footer
+
+- **WHEN** the Explore capability (`homepage-explore`) is enabled
+- **THEN** it is rendered between `<HotSpots />` and `<Footer />` as the 7th content unit
+- **AND** its presence does not affect the rendering of any other unit
 
 #### Scenario: Header Initial State
 
