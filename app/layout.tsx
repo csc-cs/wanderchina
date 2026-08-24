@@ -17,11 +17,20 @@ export const metadata: Metadata = {
     siteName: 'WanderChina',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://wanderchina.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'WanderChina — Discover China Like a Local',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'WanderChina · Discover China Like a Local',
     description: 'English guides, real traveler stories, and a 24/7 AI travel companion — all in one place.',
+    images: ['https://wanderchina.com/og-image.jpg'],
   },
 };
 

@@ -9,9 +9,12 @@ export interface AiAssistantModalProps {
 
 export function AiAssistantModal({ open, onClose }: AiAssistantModalProps) {
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
+    // Capture the previously focused element so we can restore focus on close
+    previousFocusRef.current = (document.activeElement as HTMLElement) ?? null;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -20,6 +23,11 @@ export function AiAssistantModal({ open, onClose }: AiAssistantModalProps) {
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
+      // Restore focus to whatever had it before the modal opened
+      const prev = previousFocusRef.current;
+      if (prev && typeof prev.focus === 'function') {
+        prev.focus();
+      }
       document.body.style.overflow = '';
     };
   }, [open, onClose]);

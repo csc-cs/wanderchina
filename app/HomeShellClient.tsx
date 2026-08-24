@@ -10,6 +10,7 @@ import { Explore } from '@/components/homepage/Explore';
 import { AiEntry } from '@/components/homepage/AiEntry';
 import { AiAssistantModal } from '@/components/homepage/AiAssistantModal';
 import { Footer } from '@/components/layout/Footer';
+import { ErrorBoundary } from '@/components/layout/ErrorBoundary';
 
 export function HomeShellClient() {
   const [aiOpen, setAiOpen] = useState(false);
@@ -18,11 +19,21 @@ export function HomeShellClient() {
     <>
       <Hero onAiClick={() => setAiOpen(true)} />
       <main className="bg-brand-surface">
-        <FeatureNav />
-        <CityQuickEntry />
-        <HotPosts />
-        <HotSpots />
-        <Explore />
+        <ErrorBoundary>
+          <FeatureNav />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <CityQuickEntry />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <HotPosts />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <HotSpots />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Explore />
+        </ErrorBoundary>
       </main>
       <Footer />
       <AiEntry onOpen={() => setAiOpen(true)} />
