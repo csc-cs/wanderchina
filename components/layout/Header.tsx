@@ -53,7 +53,7 @@ export function Header({ transparent = false, onAiClick }: HeaderProps) {
             type="button"
             onClick={onAiClick}
             className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-brand-primary px-4 py-2 text-white hover:bg-indigo-700 transition-colors"
-            aria-label="Open AI Travel Assistant"
+            aria-label="Open AI Assistant"
           >
             <span aria-hidden="true">✨</span>
             <span>Ask AI</span>
