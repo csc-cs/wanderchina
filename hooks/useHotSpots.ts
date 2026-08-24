@@ -1,9 +1,12 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 import { getHotSpots } from '@/lib/api/homepage';
 import type { HotSpotItem } from '@/types/homepage';
 
-export function useHotSpots(limit = 8) {
+export function useHotSpots(
+  limit = 8,
+  options?: Omit<UseQueryOptions<HotSpotItem[]>, 'queryKey' | 'queryFn'>,
+) {
   return useQuery<HotSpotItem[]>({
     queryKey: ['homepage', 'hot-spots', { limit }],
     queryFn: async () => {
@@ -13,5 +16,6 @@ export function useHotSpots(limit = 8) {
     staleTime: 10 * 60 * 1000,
     retry: 3,
     refetchOnWindowFocus: false,
+    ...options,
   });
 }
